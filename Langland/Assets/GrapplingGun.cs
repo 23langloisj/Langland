@@ -6,16 +6,19 @@ public class GrapplingGun : MonoBehaviour
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
-    private float maxDistance = 100f;
+    private float maxDistance = 500f;
     private bool isGrappling;
     private Vector3 grappleVelocity;
-    public float grappleSpeed = 10f; // Adjust this speed as needed
+    public float grappleSpeed = 100f; // Adjust this speed as needed
     private CharacterController characterController;
+
+    private PlayerMovement playerMovement;
 
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
         characterController = player.GetComponent<CharacterController>();
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -86,7 +89,7 @@ public class GrapplingGun : MonoBehaviour
         if (!isGrappling) return;
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-        
+        playerMovement.SetGravity(0f);
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);
     }

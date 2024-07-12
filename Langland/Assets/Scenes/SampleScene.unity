@@ -372,7 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1133661293}
   speed: 12
-  gravity: -9.81
+  gravity: -8
   jumpHeight: 3
   groundCheck: {fileID: 213702597}
   groundDistance: 0.4
@@ -550,6 +550,7 @@ MonoBehaviour:
   gunTip: {fileID: 1896822723}
   camera: {fileID: 1628014855}
   player: {fileID: 1133661294}
+  grappleSpeed: 10
 --- !u!120 &1490502295
 LineRenderer:
   serializedVersion: 2
