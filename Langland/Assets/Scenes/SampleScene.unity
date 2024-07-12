@@ -550,7 +550,7 @@ MonoBehaviour:
   gunTip: {fileID: 1896822723}
   camera: {fileID: 1628014855}
   player: {fileID: 1133661294}
-  grappleSpeed: 10
+  grappleSpeed: 50
 --- !u!120 &1490502295
 LineRenderer:
   serializedVersion: 2

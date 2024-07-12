@@ -11,7 +11,6 @@ public class GrapplingGun : MonoBehaviour
     private Vector3 grappleVelocity;
     public float grappleSpeed = 100f; // Adjust this speed as needed
     private CharacterController characterController;
-
     private PlayerMovement playerMovement;
 
     void Awake()
@@ -56,6 +55,7 @@ public class GrapplingGun : MonoBehaviour
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
             grappleVelocity = (grapplePoint - player.position).normalized * grappleSpeed; // Calculate the grapple velocity
+            playerMovement.ToggleGravity(false);
         }
         else
         {
@@ -67,6 +67,7 @@ public class GrapplingGun : MonoBehaviour
     {
         lr.positionCount = 0;
         isGrappling = false;
+        playerMovement.ToggleGravity(true);
     }
 
     private Vector3 currentGrapplePosition;
@@ -87,9 +88,7 @@ public class GrapplingGun : MonoBehaviour
     void DrawRope()
     {
         if (!isGrappling) return;
-
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-        playerMovement.SetGravity(0f);
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);
     }

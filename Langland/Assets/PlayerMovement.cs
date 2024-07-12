@@ -49,4 +49,9 @@ public class PlayerMovement : MonoBehaviour
  
         controller.Move(velocity * Time.deltaTime);
     }
+
+     public void ToggleGravity(bool enableGravity)
+    {
+        gravity = enableGravity ? -9.81f * 3 : 0f; // Enable or disable gravity based on input
+    }
 }
